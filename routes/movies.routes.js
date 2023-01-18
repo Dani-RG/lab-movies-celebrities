@@ -6,7 +6,7 @@ const Celebrity = require('../models/Celebrity.model');
 router.get('/movies/create', async function (req, res, next) {
 try {
     const allCelebrities = await Celebrity.find()
-    res.render('movies/new-movie'), { celebritiesArray: allCelebrities };
+    res.render('movies/new-movie', { celebritiesArray: allCelebrities });
 } catch (error) {
     next(error)
 }
@@ -21,5 +21,24 @@ try {
     next(error)
 }
 });
+
+router.get('/movies', async function (req, res, next) {
+    try {
+        const allMovies = await Movie.find()
+        res.render('movies/movies', { moviesArray: allMovies});
+    } catch (error) {
+        next(error)
+    }
+});
+
+router.get('/movies/:movieId', async function (req, res, next) {
+    const { movieId } = req.params;
+    try {
+      const movie = await Movie.findById(movieId).populate('cast');
+      res.render('movies/movie-details',  movie );
+    } catch (error) {
+      next(error)
+    }
+  });
 
 module.exports = router;
