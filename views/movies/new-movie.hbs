@@ -7,9 +7,9 @@
     <label>Plot:</label>
     <input type="text" name="plot"/>
     <label>Choose your cast:</label>
-    <select name="cast" multiple id="select-label">
+    <select name="cast" multiple>
        {{#each celebritiesArray}} 
-        <option value={{_id}}>{{name}}</option>
+        <option value="{{_id}}">{{name}}</option>
         {{/each}}
     </select>
     <button type="submit">Create it</button>

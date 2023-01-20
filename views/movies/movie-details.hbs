@@ -8,3 +8,9 @@
         <p>Catch phrase: {{catchPhrase}}</p>
     {{/each}}
 </div>
+<form method="POST" action="/movies/delete/{{_id}}">
+    <button type="submit">Delete</button>
+</form>
+<form method="GET" action="/movies/edit/{{_id}}">
+    <button type="submit">Edit</button>
+</form>
